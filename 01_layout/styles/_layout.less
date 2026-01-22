@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 固定したい高さを決める（可変にしたい場合は後述） */
+.footer {
+  height: 56px;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* 見た目は適宜 */
+  background: pink;
+}
+
+.header {
+  /* 上も固定したいなら fixed にして同様に高さ確保 */
+}
+
+/* 本文はフッター分だけ下に余白を空ける */
+.main {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding-bottom: 56px; /* footerのheightと同じ */
+}
