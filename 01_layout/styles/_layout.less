@@ -1,36 +1,39 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
+@footer-height: 56px; // フッター高さを変えたくなったときはここだけ触る
+
 .app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  /* フッターがかぶらないように、下に余白を確保 */
+  padding-bottom: @footer-height;
+  box-sizing: border-box;
+  /* flex は不要なら消してOK。別用途で必要なら残してもよい */
+  /* display: flex;
+  flex-direction: column; */
 }
 
-/* 固定したい高さを決める（可変にしたい場合は後述） */
+.header {
+  background-color: aquamarine;
+}
+
+.main {
+  /* ここがスクロールコンテナにならないようにする */
+  /* flex: 1 1 auto; */
+  /* overflow: auto; */
+  background-color: bisque;
+}
+
 .footer {
-  height: 56px;
+  height: @footer-height;
 
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
 
-  /* 見た目は適宜 */
   background: pink;
-}
-
-.header {
-  /* 上も固定したいなら fixed にして同様に高さ確保 */
-  background-color: aquamarine;
-}
-
-/* 本文はフッター分だけ下に余白を空ける */
-.main {
-  flex: 1 1 auto;
-  overflow: auto;
-  padding-bottom: 56px; /* footerのheightと同じ */
-  background-color: bisque;
 }
